@@ -3,7 +3,7 @@
     <type>org.netbeans.modules.apisupport.project</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/nb-module-project/3">
-            <code-name-base>m1.piu.data</code-name-base>
+            <code-name-base>m1.piu</code-name-base>
             <suite-component/>
             <module-dependencies>
                 <dependency>
