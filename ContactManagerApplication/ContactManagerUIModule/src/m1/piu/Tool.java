@@ -8,8 +8,10 @@ package m1.piu;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -35,22 +37,24 @@ import org.openide.util.actions.Presenter;
 @Messages("CTL_Tool=Tool")
 public final class Tool extends AbstractAction implements Presenter.Toolbar {
     
-
+    JFXPanel panel;
+    private static final URL url = Tool.class.getResource("/m1/piu/FXMLToolBar.fxml");
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO implement action body
     }
     @Override
     public Component getToolbarPresenter() {
-        FXMLLoader loader = new FXMLLoader();
-        try {
-            Stage stage = new Stage();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (MalformedURLException ex) {
-            Exceptions.printStackTrace(ex);
+        if (panel == null){
+            panel = new JFXPanel();
+            try {
+                panel.setScene(new Scene(FXMLLoader.<Parent>load(url)));
+            } catch (IOException ex) {
+                Exceptions.printStackTrace(ex);
+            }
         }
+        return panel;
+        
         //return new JLabel("Label in toolbar demo");
     }
 }
