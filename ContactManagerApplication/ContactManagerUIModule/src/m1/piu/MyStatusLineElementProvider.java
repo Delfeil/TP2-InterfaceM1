@@ -22,40 +22,13 @@ import org.openide.util.Exceptions;
 import org.openide.util.NbBundle;
 import org.openide.util.lookup.ServiceProvider;
 
-/**
- *
- * @author casanova
- */
-/*@ActionID(
-        category = "Status",
-        id = "m1.piu.MyStatusLineElementProvider"
-)
-/*@ActionRegistration(
-        iconBase = "m1/piu/54257998_2357457401153276_2699110482786123776_n.png",
-        displayName = "#CTL_MyStatusLineElementProvider"
-)
-@ActionReference(path = "Toolbars/Status", position = 300)
-@NbBundle.Messages("CTL_MyStatusLineElementProvider=MyStatusLineElementProvider")*/
+
 @ServiceProvider(service = StatusLineElementProvider.class, position = 100)
 public final class MyStatusLineElementProvider implements StatusLineElementProvider {
     
-    /*JFXPanel panel;
-    private static final URL url = Tool.class.getResource("/m1/piu/FXMLStatus.fxml");*/
-
     @Override
     public Component getStatusLineElement() {
         return new JLabel("Status");
-        /*if (panel == null){
-            panel = new JFXPanel();
-            try {
-                panel.setScene(new Scene(FXMLLoader.<Parent>load(url)));
-            } catch (IOException ex) {
-                Exceptions.printStackTrace(ex);
-            }
-        }
-        return panel;
-        
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.*/
     }
     
 }
