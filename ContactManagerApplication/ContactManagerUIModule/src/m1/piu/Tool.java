@@ -8,13 +8,18 @@ package m1.piu;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.net.URL;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import javax.swing.AbstractAction;
 import javax.swing.JLabel;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionRegistration;
+import org.openide.util.Exceptions;
 import org.openide.util.NbBundle.Messages;
 import org.openide.util.actions.Presenter;
 
@@ -29,6 +34,7 @@ import org.openide.util.actions.Presenter;
 @ActionReference(path = "Toolbars/File", position = 300)
 @Messages("CTL_Tool=Tool")
 public final class Tool extends AbstractAction implements Presenter.Toolbar {
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -36,6 +42,15 @@ public final class Tool extends AbstractAction implements Presenter.Toolbar {
     }
     @Override
     public Component getToolbarPresenter() {
-        return new JLabel("Label in toolbar demo");
+        FXMLLoader loader = new FXMLLoader();
+        try {
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (MalformedURLException ex) {
+            Exceptions.printStackTrace(ex);
+        }
+        //return new JLabel("Label in toolbar demo");
     }
 }
