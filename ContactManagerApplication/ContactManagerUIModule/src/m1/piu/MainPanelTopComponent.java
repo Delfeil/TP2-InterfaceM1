@@ -5,11 +5,19 @@
  */
 package m1.piu;
 
+import java.awt.BorderLayout;
+import java.io.IOException;
 import java.net.URL;
+import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javax.swing.JPanel;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
+import org.openide.util.Exceptions;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
 
@@ -39,6 +47,8 @@ import org.openide.util.NbBundle.Messages;
 })
 public final class MainPanelTopComponent extends TopComponent {
     
+    //private static FXMLMainController c;
+    
     JFXPanel panel;
     private static final URL url = Tool.class.getResource("/m1/piu/FXMLToolBar.fxml");
 
@@ -46,9 +56,41 @@ public final class MainPanelTopComponent extends TopComponent {
         initComponents();
         setName(Bundle.CTL_MainPanelTopComponent());
         setToolTipText(Bundle.HINT_MainPanelTopComponent());
-        
+        setLayout(new BorderLayout());
+        init();
 
     }
+    
+    public void init() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        JFXPanel fxPanel = new JFXPanel();
+        panel.add(fxPanel, BorderLayout.NORTH);
+        add(fxPanel, BorderLayout.CENTER);
+        Platform.setImplicitExit(false);
+        createFXScene(fxPanel);
+
+        //Platform.runLater(() -> {
+        //    createFXScene(fxPanel);
+        //});
+    }
+    
+    private void createFXScene(JFXPanel fxPanel) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMainPanel.fxml"));
+            
+            Parent root = loader.load();
+   
+            //c = loader.getController();
+                            
+            Scene scene = new Scene(root);
+            fxPanel.setScene(scene);
+        } catch (IOException ex) {
+            System.out.println("ici");
+            Exceptions.printStackTrace(ex);
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
