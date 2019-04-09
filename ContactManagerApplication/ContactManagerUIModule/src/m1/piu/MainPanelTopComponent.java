@@ -47,7 +47,7 @@ import org.openide.util.NbBundle.Messages;
 })
 public final class MainPanelTopComponent extends TopComponent {
     
-    //private static FXMLMainController c;
+    private static FXMLMainPannelController c;
     
     JFXPanel panel;
     private static final URL url = Tool.class.getResource("/m1/piu/FXMLToolBar.fxml");
@@ -81,7 +81,7 @@ public final class MainPanelTopComponent extends TopComponent {
             
             Parent root = loader.load();
    
-            //c = loader.getController();
+            c = loader.getController();
                             
             Scene scene = new Scene(root);
             fxPanel.setScene(scene);
@@ -89,6 +89,10 @@ public final class MainPanelTopComponent extends TopComponent {
             System.out.println("ici");
             Exceptions.printStackTrace(ex);
         }
+    }
+    
+    public static FXMLMainPannelController getController( ) {
+        return c;
     }
     
 
