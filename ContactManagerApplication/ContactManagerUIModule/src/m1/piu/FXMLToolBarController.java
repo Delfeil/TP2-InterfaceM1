@@ -56,7 +56,7 @@ public class FXMLToolBarController implements Initializable {
             }
         });
         
-        clear.setOnAction(new EventHandler<ActionEvent>() {
+        /*clear.setOnAction(new EventHandler<ActionEvent>() {
            public void handle(ActionEvent event) {
                System.out.println("Clear event");
                Object result = DialogDisplayer.getDefault().notify(new NotifyDescriptor.Confirmation("Êtes vous sure de vouloir supprimer ce contact?", NotifyDescriptor.YES_NO_OPTION, NotifyDescriptor.WARNING_MESSAGE));
@@ -67,7 +67,7 @@ public class FXMLToolBarController implements Initializable {
                    System.out.println("No");
                }
            } 
-        });
+        });*/
     }    
     
 }
