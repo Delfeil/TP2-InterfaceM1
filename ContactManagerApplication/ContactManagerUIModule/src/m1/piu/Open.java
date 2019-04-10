@@ -18,38 +18,36 @@ import org.openide.util.RequestProcessor;
 
 @ActionID(
         category = "File",
-        id = "m1.piu.save"
+        id = "m1.piu.Open"
 )
 @ActionRegistration(
-        iconBase = "m1/piu/icons8-enregistrer-sous-16.png",
-        displayName = "#CTL_save"
+        iconBase = "m1/piu/icons8-dossier-ouvert-16.png",
+        displayName = "#CTL_Open"
 )
 @ActionReference(path = "Menu/File", position = 1300)
-@Messages("CTL_save=Save")
-public final class save implements ActionListener {
+@Messages("CTL_Open=Open")
+public final class Open implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO implement action body
-        
-        
         Runnable myRunnable = new Runnable() {
             public void run() {
-                ProgressHandle myProgressHandle = ProgressHandleFactory.createHandle("Sauvegarde en cours...");
+                ProgressHandle myProgressHandle = ProgressHandleFactory.createHandle("Chargement du fichier...");
                 int i=0;
                 myProgressHandle.start(100);
                 //DO TASK HERE
                 
                 while(i<100) {
                     try {
-                        myProgressHandle.progress("Sauvegarde en cours...", i);
+                        myProgressHandle.progress("Chargement du fichier...", i);
                         Thread.sleep(1000);
                         i+=10;
                     } catch (InterruptedException ex) {
                         Exceptions.printStackTrace(ex);
                     }
                 }
-                myProgressHandle.progress("Sauvegarde en cours...", i);
+                myProgressHandle.progress("Chargement du fichier...", i);
                 myProgressHandle.finish();
             }
         };
